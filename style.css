@@ -25,10 +25,25 @@ html, body{
     align-items: center;
     width: 117px;
     height: 146px;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
     border-radius: 5px;
     margin: 17px 17px;
+    position: relative;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    border: 1px solid #99CEA8;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
 .titulo{
@@ -52,6 +67,21 @@ html, body{
     width: 100px;
     height: 100px;
 }
+
+
+  .carta-verso {
+    transform: rotateY(180deg);
+  }
+
+  .cartas-especificas:hover .carta-verso {
+    transform: rotateY(0deg);
+  }
+
+  .cartas-especificas:hover .carta-frente {
+    transform: rotateY(-180deg);
+  }
+
+
 
 @media (max-width: 980px) {
     
