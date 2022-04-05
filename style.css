@@ -73,11 +73,11 @@ html, body{
     transform: rotateY(180deg);
   }
 
-  .cartas-especificas:hover .carta-verso {
+  .cartas-fica-verso {
     transform: rotateY(0deg);
   }
 
-  .cartas-especificas:hover .carta-frente {
+  .cartas-vira {
     transform: rotateY(-180deg);
   }
 
