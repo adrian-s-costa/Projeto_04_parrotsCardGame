@@ -9,13 +9,13 @@ function darCartas(){
     
     
     
-    let cartas = prompt("Com quantas cartas vc deseja jogar? (Entre 4 e 14)")
+    let cartas = prompt("Com quantas cartas vc deseja jogar? (Valores pares entre 4 e 14)")
 
-    while (cartas < 4 || cartas > 14){
+    while (cartas < 4 || cartas > 14 || cartas % 2 !== 0){
         
         console.log(cartas)
 
-        cartas = prompt("Valor inválido! Com quantas cartas você quer jogar? (Entre 4 e 14)")
+        cartas = prompt("Valor inválido! Com quantas cartas você quer jogar? (Valores pares entre 4 e 14)")
 
         
 
