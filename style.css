@@ -85,9 +85,6 @@ html, body{
 
 @media (max-width: 980px) {
     
-    html, body{
-        
-    }
 
     .pagina{
         height: fit-content;
