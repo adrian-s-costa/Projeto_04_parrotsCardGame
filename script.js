@@ -15,7 +15,6 @@ let cartaSelecionada2 = 0
 
 function virarCarta(elementoClicado){
     elementoClicado.querySelector(".carta-verso").classList.add("carta-vira")
-    elementoClicado.querySelector(".carta-verso").classList.add("carta-vira")
     elementoClicado.querySelector(".carta-vira").classList.remove("carta-verso")
     console.log(elementoClicado)
     selecionar(elementoClicado);
@@ -103,62 +102,69 @@ function darCartas(){
 
 function selecionar(cartaClicada){
         
-    cartaClicada.classList.add("selecionado")
+    
 
+    cartaSelecionada = document.querySelector(".selecionado")
 
-    if (document.querySelectorAll(".selecionado").length % 2 !== 0) {
-        cartaSelecionada1 = cartaClicada
-        console.log(cartaSelecionada1)
-    }
-
-    if (document.querySelectorAll(".selecionado").length % 2 == 0) {
-        cartaSelecionada2 = cartaClicada
-        console.log(cartaSelecionada2)
-            
-        
-        if(cartaSelecionada1.innerHTML === cartaSelecionada2.innerHTML){
-            
-            cartaSelecionada1.classList.add("acertada")
-            cartaSelecionada2.classList.add("acertada")
-            console.log(document.querySelectorAll(".acertada").length)
-
-            if(document.querySelectorAll(".acertada").length === Number(cartas)){
-               setTimeout(vitoria, 1000)
-            }else{
-                cartaSelecionada1 = ''
-                cartaSelecionada2 = ''
-            }
-
-        }else{
-
-            cartaSelecionada1 = ''
-            cartaSelecionada2 = ''
-            
-            voltaCarta()
+        if (cartaSelecionada == null){
+            cartaClicada.classList.add("selecionado")
+            cartaSelecionada1 = cartaClicada
         }
-    }
+        if (cartaSelecionada !== null){
+            cartaClicada.classList.add("selecionado")
+            cartaSelecionada2 = cartaClicada
+        }
+
+        if (document.querySelectorAll(".selecionado").length == 2){
+        console.log(document.querySelectorAll(".selecionado"))
+            if (cartaSelecionada1.innerHTML === cartaSelecionada2.innerHTML){
+                
+                cartaSelecionada1.classList.remove("selecionado")
+                cartaSelecionada1.classList.add("acertada")
+
+                cartaSelecionada2.classList.remove("selecionado")
+                cartaSelecionada2.classList.add("acertada")
+
+                setTimeout(validarVitoria, 1000)
+
+            }else{
+                cartaSelecionada1.classList.remove("selecionado")
+                cartaSelecionada2.classList.remove("selecionado")
+                setTimeout( voltaCarta, 1000)
+            }
+        }
+
+        
+
+           
 }
+    
+
 
 function voltaCarta(){
-    cartaSelecionada1.querySelector(".carta-verso").classList.remove("carta-vira")
-    cartaSelecionada1.querySelector(".carta-verso").classList.remove("carta-vira")
     cartaSelecionada1.querySelector(".carta-vira").classList.add("carta-verso")
+    cartaSelecionada1.querySelector(".carta-verso").classList.remove("carta-vira")
 
-    cartaSelecionada2.querySelector(".carta-verso").classList.remove("carta-vira")
-    cartaSelecionada2.querySelector(".carta-verso").classList.remove("carta-vira")
     cartaSelecionada2.querySelector(".carta-vira").classList.add("carta-verso")
+    cartaSelecionada2.querySelector(".carta-verso").classList.remove("carta-vira")
+    cartaSelecionada1 = ''
+    cartaSelecionada2 = ''
 }
 
-function vitoria(){
-    prompt("parabens vc venceu")
+function validarVitoria(){
+    
+    if(document.querySelectorAll(".acertada").length === Number(cartas)){
 
-    const resposta = prompt("quer jogar dnv?")
+        prompt("IHUL! VOCÊ VENCEU!!!")
 
-    if (resposta == "sim"){
+        const resposta = prompt("Quer jogar novamente?")
+
+        if (resposta == "sim"){
         darCartas()
-    }
-    else{
+        }
+        else{
         
+        }
     }
 }
 
