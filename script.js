@@ -11,13 +11,14 @@ const cartasVerso = [`<img src="imagens/bobrossparrot.gif">`,
 
 let cartaSelecionada1 = 0
 let cartaSelecionada2 = 0
-
+let contadorJogada = 0
 
 function virarCarta(elementoClicado){
     elementoClicado.querySelector(".carta-verso").classList.add("carta-vira")
     elementoClicado.querySelector(".carta-vira").classList.remove("carta-verso")
     console.log(elementoClicado)
     selecionar(elementoClicado);
+    contadorJogada++
 }
 
 function comparador(){
@@ -155,15 +156,15 @@ function validarVitoria(){
     
     if(document.querySelectorAll(".acertada").length === Number(cartas)){
 
-        prompt("IHUL! VOCÊ VENCEU!!!")
+        prompt(`IHUL! VOCÊ VENCEU!!! Você venceu em ${contadorJogada} jogadas`)
 
         const resposta = prompt("Quer jogar novamente?")
 
-        if (resposta == "sim"){
+        if (resposta === "sim"){
         darCartas()
         }
-        else{
-        
+        if (resposta === "não"){
+        setInterval(window.close, 1000)
         }
     }
 }
