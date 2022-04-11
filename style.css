@@ -8,6 +8,7 @@ html, body{
     height: 100%;
     background-color: #eef9bf;
     align-items: center;
+    position: relative;
 }
 
 
@@ -56,7 +57,7 @@ html, body{
     color: #75B79E;
     flex-wrap: wrap;
     text-align: center;
-    margin-top: 40px; 
+    margin-top: 60px; 
     margin-bottom: 47px;
 }
 
@@ -81,7 +82,19 @@ html, body{
     transform: rotateY(-180deg);
   }
 
-
+  .timer{
+    position: absolute;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    color: #75B79E;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+}
 
 @media (max-width: 980px) {
     
@@ -93,3 +106,4 @@ html, body{
     
 
 }
+

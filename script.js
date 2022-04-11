@@ -7,8 +7,7 @@ const cartasVerso = [`<img src="imagens/bobrossparrot.gif">`,
     `<img src="imagens/unicornparrot.gif">`
 ]
 
-
-
+let timerInterval = setInterval(startTimer, 1000)
 let cartaSelecionada1 = 0
 let cartaSelecionada2 = 0
 let contadorJogada = 0
@@ -19,6 +18,7 @@ function virarCarta(elementoClicado){
     console.log(elementoClicado)
     selecionar(elementoClicado);
     contadorJogada++
+    
 }
 
 function comparador(){
@@ -31,7 +31,10 @@ let cartas
 
 function darCartas(){
     
-    
+
+    clearInterval(timerInterval)
+
+    contadorJogada = 0
     
     cartas = prompt("Com quantas cartas vc deseja jogar? (Valores pares entre 4 e 14)")
 
@@ -69,8 +72,7 @@ function darCartas(){
                         ${cartaVersoDupla}
                     </div>
                 </div>
-                `, 
-            status: "não selecionado"
+                `
         }
         
 
@@ -92,9 +94,10 @@ function darCartas(){
 
 
    
-
    
-
+   
+ 
+    setInterval(startTimer, 1000)
    
 
 }
@@ -135,8 +138,7 @@ function selecionar(cartaClicada){
             }
         }
 
-        
-
+    
            
 }
     
@@ -156,7 +158,7 @@ function validarVitoria(){
     
     if(document.querySelectorAll(".acertada").length === Number(cartas)){
 
-        prompt(`IHUL! VOCÊ VENCEU!!! Você venceu em ${contadorJogada} jogadas`)
+        alert(`IHUL! VOCÊ VENCEU!!! Você venceu em ${contadorJogada} jogadas`)
 
         const resposta = prompt("Quer jogar novamente?")
 
@@ -164,9 +166,43 @@ function validarVitoria(){
         darCartas()
         }
         if (resposta === "não"){
-        setInterval(window.close, 1000)
+        setTimeout(window.close, 1000)
         }
     }
 }
+
+let sec = 0
+let min = 0
+    
+function startTimer() {
+    
+   
+    let acertadas = document.querySelectorAll(".acertada").length
+    
+    let timer = document.querySelector(".timer")
+
+    
+   
+    if(acertadas != Number(cartas)){
+        sec++
+        console.log(timer)
+        if(sec > 59){
+            sec = 0
+            min ++
+        }
+        timer.innerHTML = `0${min}:${sec}`
+        if (sec > 9){
+            timer.innerHTML = `0${min}:${sec}`
+        }
+        if(min > 9){
+            timer.innerHTML = `${min}:${sec}`
+        }
+    }else{
+        console.log(startTimer)
+        clearInterval(timerInterval)
+    }
+
+}
+
 
 
