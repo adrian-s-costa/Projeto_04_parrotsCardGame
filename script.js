@@ -136,10 +136,8 @@ function selecionar(cartaClicada){
                 cartaSelecionada2.classList.remove("selecionado")
                 setTimeout( voltaCarta, 1000)
             }
-        }
-
-    
-           
+            return
+        }    
 }
     
 
